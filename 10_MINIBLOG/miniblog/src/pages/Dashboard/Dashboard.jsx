@@ -10,7 +10,8 @@ import {useFetchDocuments} from "../../hooks/useFetchDocuments"
 const Dashboard = () => {
   const {user} = useAuthValue();
   const uid = user.uid;
-  const posts = [];
+
+  const {documents: posts, loading} = useFetchDocuments("posts", null, uid)
 
   return (
     <div>
@@ -24,6 +25,8 @@ const Dashboard = () => {
         ) : (
           <div>Tem posts!</div>
         )}
+
+        {posts && posts.map((posts) => <h3>{posts.title}</h3> )}
 
     </div>
   )
