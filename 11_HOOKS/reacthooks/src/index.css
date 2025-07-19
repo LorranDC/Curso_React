@@ -9,3 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  padding-bottom: 500px;
+}
+
