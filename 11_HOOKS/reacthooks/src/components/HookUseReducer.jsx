@@ -3,7 +3,7 @@ import { useReducer, useState } from "react"
 const HookUseReducer = () => {
 
   //1 - começando com useReducer
-  const [number, dispatch] = useReducer((state, action) => {
+  const [number, dispatch] = useReducer((state) => {
     return Math.random(state);
   })
 
@@ -15,15 +15,16 @@ const HookUseReducer = () => {
 
   const taskReducer = (state, action) => {
     switch (action.type) {
-      case "ADD":
+      case "ADD": {
         const newTask = {
           id: Math.random(),
           text: taskText,
-        };
+        }
+      ;
 
         setTaskText("");
         return [...state, newTask];
-
+      }
       case "DELETE":
         return state.filter((task => task.id !== action.id));
 
