@@ -1,4 +1,4 @@
-import React from 'react'
+import HookUseRef from '../components/HookUseRef'
 import HookUseState from '../components/HookUseState'
 import HookUseReducer from '../components/HookUseReducer'
 import HookUseEffect from '../components/HookUseEffect'
@@ -21,8 +21,9 @@ const Home = () => {
             <h2>useContext</h2>
             <p>Valor do context: {contextValue}</p>
             <hr />
+            <HookUseRef/>
         </div>
-    )
+    ) 
 }
 
 export default Home
