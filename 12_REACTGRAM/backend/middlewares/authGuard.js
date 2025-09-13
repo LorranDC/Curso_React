@@ -1,6 +1,6 @@
-const User = require("../models/User")
-const jwt = require("jsonwebtoken")
-const jwtSecret = process.env.JWT_SECRET
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const jwtSecret = process.env.JWT_SECRET;
 
 const authGuard = async (req, res, next) => {
     
@@ -24,3 +24,5 @@ const authGuard = async (req, res, next) => {
     }
 
 }
+
+module.exports = authGuard
