@@ -15,33 +15,42 @@ import Modal from "./components/Modal";
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
+  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
 
-  const deleteTask = (id:number) => {
+  const deleteTask = (id: number) => {
     setTaskList(
-      taskList.filter(task=> {
+      taskList.filter((task) => {
         return task.id !== id;
       })
-    )
-  }
+    );
+  };
 
-  const hideOrShowModal = (display:boolean) => {
-    const modal = document.querySelector("#modal")
+  const hideOrShowModal = (display: boolean) => {
+    const modal = document.querySelector("#modal");
 
-    if(display) {
-      modal!.classList.remove("hide")
+    if (display) {
+      modal!.classList.remove("hide");
+    } else {
+      modal!.classList.add("hide");
     }
-    else {
-      modal!.classList.add("hide")
-    }
-  }
+  };
 
-  const editTask = ():void => {
-    hideOrShowModal(true)
-  }
+  const editTask = (task: ITask): void => {
+    hideOrShowModal(true);
+    setTaskToUpdate(task);
+  };
 
   return (
     <div>
-      <Modal children={<TaskForm btnText="Editar Tarefa" taskList={taskList} />}/>
+      <Modal
+        children={
+          <TaskForm
+            btnText="Editar Tarefa"
+            taskList={taskList}
+            task={taskToUpdate}
+          />
+        }
+      />
       <Header />
 
       <main className={styles.main}>
@@ -56,7 +65,11 @@ function App() {
 
         <div>
           <h2>Suas tarefas:</h2>
-          <TaskList taskList={taskList} handleDelete={deleteTask} handleEdit={editTask}/>
+          <TaskList
+            taskList={taskList}
+            handleDelete={deleteTask}
+            handleEdit={editTask}
+          />
         </div>
       </main>
       <Footer />
